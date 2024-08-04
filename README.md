@@ -6,7 +6,7 @@ My Cool Blog is a full-stack web application designed for users to share their t
 
 ## Site Deployment
 
-[Link to Render site]()
+[Link to Render site](https://my-blog-kes0.onrender.com/)
 
 ## Screenshots
 
