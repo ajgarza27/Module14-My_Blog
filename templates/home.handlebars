@@ -1,0 +1,38 @@
+<header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="/">Home</a>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto">
+                {{#if logged_in}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/dashboard">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/logout">Logout</a>
+                </li>
+                {{else}}
+                <li class="nav-item">
+                    <a class="nav-link" href="/login">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/signup">Signup</a>
+                </li>
+                {{/if}}
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<main class="container mt-4">
+    <h1>Homepage</h1>
+    {{#each posts}}
+    <div class="card mb-4">
+        <div class="card-body">
+            <h2 class="card-title">{{this.title}}</h2>
+            <p class="card-text">{{this.createdAt}}</p>
+            <p class="card-text">{{this.content}}</p>
+            <p class="card-text"><small class="text-muted">By {{this.user.username}}</small></p>
+        </div>
+    </div>
+    {{/each}}
+</main>
