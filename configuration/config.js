@@ -1,7 +1,6 @@
 const { Sequelize } = require('sequelize');
 require('dotenv').config();
 
-
 let sequelize;
 
 if (process.env.DB_URL) {
@@ -12,8 +11,10 @@ if (process.env.DB_URL) {
     process.env.DB_USER,
     process.env.DB_PW,
     {
-      host: 'localhost',
+      host: process.env.DB_HOST || 'localhost',
       dialect: 'postgres',
-    },
+    }
   );
 }
+
+module.exports = sequelize;
