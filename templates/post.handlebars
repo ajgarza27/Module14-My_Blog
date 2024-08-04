@@ -1,0 +1,43 @@
+{{#> layout title=title}}
+<main class="container mt-4">
+    <div class="card mb-4">
+        <div class="card-header bg-dark text-white">
+            <h2 class="card-title">{{title}}</h2>
+            <small class="text-muted">Posted by {{user.username}} on {{format_date createdAt}}</small>
+        </div>
+        <div class="card-body">
+            <p class="card-text">{{content}}</p>
+        </div>
+    </div>
+    {{#if logged_in}}
+    <div class="card mb-4">
+        <div class="card-body">
+            <form id="comment-form">
+                <div class="form-group">
+                    <label for="comment">Comment</label>
+                    <textarea name="comment" id="comment" rows="4" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    {{else}}
+    <p class="text-danger">Please <a href="/login" class="text-primary">login</a> to leave a comment.</p>
+    {{/if}}
+    <div>
+        {{#each comments}}
+        <div class="card mb-4">
+            <div class="card-header bg-dark text-white">
+                <h3 class="card-title">{{this.user.username}}</h3>
+                <small class="text-muted">{{format_date this.createdAt}}</small>
+            </div>
+            <div class="card-body">
+                <p class="card-text">{{this.content}}</p>
+            </div>
+        </div>
+        {{/each}}
+    </div>
+</main>
+{{/layout}}
